@@ -14,7 +14,7 @@ import { readDataFile, writeDataFile } from "../db/db_transactions.js";
 
 const router = Router();
 
-// GET /api/v2/students
+// GET /api/v3/students
 // get students (by program)
 router.get("/", async (req: Request, res: Response) => {
   try {
