@@ -59,3 +59,7 @@ export const zEnrollmentBody = z.object({
   studentId: zStudentId,
   courseId: zCourseId,
 });
+
+
+
+ 
