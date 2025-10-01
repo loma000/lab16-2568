@@ -26,7 +26,7 @@ app.use(invalidJsonMiddleware);
 
 // Endpoints
 app.get("/", (req: Request, res: Response) => {
-  res.send("Lecture18 API services");
+  res.send("Lab16 API services");
 });
 
 app.get("/me", (req: Request, res: Response) => {
