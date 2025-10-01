@@ -202,7 +202,7 @@ router.post(
       if (findenrollment) {
         return res.status(409).json({
           success: false,
-          message: "Enrollment is already exists",
+          message: "studentId && courseId is already exists",
         });
       }
 
