@@ -180,9 +180,7 @@ router.post(
 
       // 2. check if user exists (search with username) and role is ADMIN
       const user = users.find((u: User) => u.username === payload?.username);
-      console.log(studentId);
-      console.log(body.studentId);
-      console.log(user?.studentId);
+      
 
       if (
         studentId != body.studentId ||
@@ -217,7 +215,7 @@ router.post(
         .map((enroll) => enroll.courseId);
 
       if (students[studentIndex]?.courses !== undefined) {
-        students[studentIndex].courses = { ...students[studentIndex].courses  ,...{courses:newcourse}};
+        students[studentIndex].courses =   newcourse ;
       }
 
       return res.status(200).json({
@@ -305,7 +303,7 @@ router.delete(
         .map((enroll) => enroll.courseId);
 
       if (students[studentIndex]?.courses !== undefined) {
-        students[studentIndex].courses = { ...students[studentIndex].courses  ,...{courses:newcourse}};
+        students[studentIndex].courses =   newcourse ;
       }
       return res.status(200).json({
         success: true,
