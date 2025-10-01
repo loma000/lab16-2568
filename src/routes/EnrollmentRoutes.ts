@@ -85,7 +85,7 @@ router.get(
     try {
       const studentId = req.params.studentId;
       const result = zStudentId.safeParse(studentId);
-      console.log(studentId);
+
       if (!result.success) {
         return res.status(400).json({
           message: "Validation failed",
@@ -96,7 +96,7 @@ router.get(
       const studentIndex = students.findIndex(
         (student: Student) => student.studentId === studentId
       );
-      console.log(studentIndex);
+
       if (studentIndex === -1) {
         return res.status(404).json({
           success: false,
@@ -180,7 +180,6 @@ router.post(
 
       // 2. check if user exists (search with username) and role is ADMIN
       const user = users.find((u: User) => u.username === payload?.username);
-      
 
       if (
         studentId != body.studentId ||
@@ -207,16 +206,15 @@ router.post(
         });
       }
 
-      
-
       enrollments.push(body);
       const newcourse = enrollments
         .filter((enroll) => enroll.studentId === studentId)
         .map((enroll) => enroll.courseId);
 
-      if (students[studentIndex]?.courses !== undefined) {
-        students[studentIndex].courses =   newcourse ;
-      }
+      students[studentIndex] = {
+        ...students[studentIndex],
+        courses: newcourse,
+      } as Student;
 
       return res.status(200).json({
         success: true,
@@ -302,9 +300,7 @@ router.delete(
         .filter((enroll) => enroll.studentId === studentId)
         .map((enroll) => enroll.courseId);
 
-      if (students[studentIndex]?.courses !== undefined) {
-        students[studentIndex].courses =   newcourse ;
-      }
+     students[studentIndex] = {...students[studentIndex] ,  courses:newcourse } as Student ;
       return res.status(200).json({
         success: true,
         message: `Student ${studentId} && Course ${body.courseId} has been deleted successfully`,
