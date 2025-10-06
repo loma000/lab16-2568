@@ -115,7 +115,7 @@ router.get(
           message: "Unauthorized user",
         });
       }
-
+ 
       if (
         user.role === "ADMIN" ||
         (user.role === "STUDENT" && user.studentId === studentId)

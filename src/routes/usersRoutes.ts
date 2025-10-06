@@ -84,7 +84,7 @@ router.post("/login", (req: Request, res: Response) => {
       });
     }
 
-    const jwt_secret = process.env.JWT_SECRET || "forgot_secret";
+    const jwt_secret = process.env.JWT_SECRET || "this_is_my_secret";
     const token = jwt.sign(
       {
         //add pay load
